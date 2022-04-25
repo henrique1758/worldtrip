@@ -1,7 +1,13 @@
-import { Flex, Grid, Image } from "@chakra-ui/react";
+import { Flex, Grid, Icon, Image } from "@chakra-ui/react";
+import Link from "next/link";
+import { RiArrowLeftSLine } from "react-icons/ri";
 
 
-export function Header() {
+interface HeaderProps {
+  hasIcon?: boolean
+}
+
+export function Header({ hasIcon }: HeaderProps) {
   return (
     <Flex 
       bg="white" 
@@ -22,6 +28,14 @@ export function Header() {
         templateColumns="repeat(3, 1fr)"
         justifyContent="center"
       >
+        {hasIcon && (
+          <Link href="/">
+            <a>
+              <Icon as={RiArrowLeftSLine} fontSize={[20, 40]} justifySelf="start" />
+            </a>
+          </Link>
+        )}
+
         <Image 
           w={["81px", "184px"]}
           src="/logo.svg" 
